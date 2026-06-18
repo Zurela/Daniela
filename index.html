@@ -6,153 +6,140 @@
 
 <title>Para Daniela ❤️</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    font-family:Georgia, serif;
-    color:white;
-    text-align:center;
-    min-height:100vh;
-    overflow-x:hidden;
-    background:
-    linear-gradient(
-    to bottom,
-    #050816,
-    #0b1026,
-    #13294b);
+font-family:'Cinzel',serif;
+background:#0b1320;
+color:white;
+overflow-x:hidden;
+text-align:center;
 }
 
-#inicio{
-    padding-top:120px;
+#startScreen{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:9999;
 }
 
-h1{
-    color:#ffd700;
-    text-shadow:0 0 15px gold;
+#startButton{
+padding:20px 50px;
+font-size:24px;
+background:gold;
+border:none;
+cursor:pointer;
+border-radius:10px;
 }
 
-button{
-    margin-top:30px;
-    padding:15px 40px;
-    font-size:1.2rem;
-    border:none;
-    border-radius:12px;
-    cursor:pointer;
-    background:gold;
-    font-weight:bold;
+#main{
+display:none;
 }
 
-button:hover{
-    transform:scale(1.05);
+.hero{
+padding:80px 20px;
+background:url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000') center center/cover;
 }
 
-#aventura{
-    display:none;
-    padding:30px;
+.hero h1{
+font-size:3rem;
+text-shadow:3px 3px 10px black;
 }
 
-.castillo{
-    font-size:120px;
-    margin:20px;
+.hero p{
+font-size:1.3rem;
+margin-top:20px;
 }
 
-.cofres{
-    display:flex;
-    justify-content:center;
-    gap:60px;
-    flex-wrap:wrap;
-    margin-top:40px;
+.triforce{
+font-size:120px;
+color:gold;
+animation:pulse 2s infinite;
+margin:40px 0;
 }
 
-.cofre{
-    font-size:100px;
-    cursor:pointer;
-    transition:.4s;
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.1);}
+100%{transform:scale(1);}
 }
 
-.cofre:hover{
-    transform:scale(1.15);
+.section{
+padding:60px 20px;
 }
 
-.mensaje{
-    display:none;
-    color:#ffd700;
-    font-size:22px;
-    margin-top:15px;
+.chest-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+margin-top:40px;
 }
 
-#espada{
-    margin-top:50px;
-    display:none;
-    cursor:pointer;
-    font-size:100px;
+.chest{
+font-size:100px;
+cursor:pointer;
+transition:0.4s;
 }
 
-#espada p{
-    font-size:20px;
+.chest:hover{
+transform:scale(1.2);
 }
 
-#mensajeFinal{
-    display:none;
-    margin-top:50px;
-    padding:30px;
-    background:rgba(255,255,255,.08);
-    border-radius:20px;
+.message{
+display:none;
+margin-top:15px;
+font-size:1.2rem;
+color:#ffd700;
 }
 
-#carta{
-    display:none;
-    margin:40px auto;
-    max-width:700px;
-    background:rgba(255,255,255,.08);
-    padding:25px;
-    border-radius:20px;
-    line-height:1.8;
+.counter{
+font-size:2rem;
+margin-top:20px;
 }
 
 .spotify{
-    margin-top:40px;
+max-width:500px;
+margin:auto;
 }
 
-iframe{
-    border-radius:12px;
-    max-width:600px;
+.final{
+padding:80px 20px;
+font-size:2rem;
+background:#111;
 }
 
-.estrella{
-    position:fixed;
-    color:white;
-    animation:parpadeo 3s infinite;
+.heart{
+position:fixed;
+font-size:24px;
+animation:float 8s linear infinite;
+pointer-events:none;
 }
 
-@keyframes parpadeo{
-    50%{
-        opacity:.2;
-    }
+@keyframes float{
+from{
+transform:translateY(100vh);
+opacity:1;
 }
-
-.corazon{
-    position:fixed;
-    font-size:24px;
-    animation:subir 7s linear forwards;
+to{
+transform:translateY(-100px);
+opacity:0;
 }
-
-@keyframes subir{
-    from{
-        transform:translateY(0);
-        opacity:1;
-    }
-
-    to{
-        transform:translateY(-120vh);
-        opacity:0;
-    }
 }
 
 </style>
@@ -160,272 +147,183 @@ iframe{
 
 <body>
 
-<div id="inicio">
+<div id="startScreen">
 
-    <h1>🎮 Para Daniela ❤️</h1>
+<h1 style="margin-bottom:30px;">
+✨ La Leyenda de Daniela ✨
+</h1>
 
-    <h2 style="margin-top:20px;">
-        Una aventura creada especialmente para ti
-    </h2>
-
-    <button onclick="iniciarAventura()">
-        PRESIONA INICIO
-    </button>
+<button id="startButton">
+🎮 PRESS START
+</button>
 
 </div>
 
-<div id="aventura">
+<div id="main">
 
-    <div class="castillo">
-        🏰
-    </div>
+<div class="hero">
 
-    <h1>Bienvenida Daniela ✨</h1>
+<h1>Daniela ❤️</h1>
 
-    <p style="margin-top:15px;">
-        Explora esta pequeña aventura y descubre el secreto.
-    </p>
+<p>Eres mi aventura favorita.</p>
 
-    <div class="cofres">
+<div class="triforce">▲</div>
 
-        <div>
+</div>
 
-            <div id="cofre1"
-            class="cofre"
-            onclick="abrirCofre1()">
-                📦
-            </div>
+<div class="section">
 
-            <div id="mensaje1"
-            class="mensaje">
+<h2>⏳ Tiempo de nuestra aventura</h2>
 
-                ❤️ Gracias por llegar a mi vida ❤️
+<div id="counter" class="counter"></div>
 
-            </div>
+</div>
 
-        </div>
+<div class="section">
 
-        <div>
+<h2>🎵 Nuestras Canciones</h2>
 
-            <div id="cofre2"
-            class="cofre"
-            onclick="abrirCofre2()">
-                📦
-            </div>
+<br>
 
-            <div id="mensaje2"
-            class="mensaje">
+<div class="spotify">
 
-                ✨ Cada día contigo es una aventura ✨
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/5J4ZkQpzMUFojo1CtAZYpn"
+width="100%"
+height="152"
+frameborder="0"
+allowfullscreen
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
 
-            </div>
+<br><br>
 
-        </div>
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/4frLb7nWtsz2ymBE6k2GRP"
+width="100%"
+height="152"
+frameborder="0"
+allowfullscreen
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
 
-    </div>
+</div>
 
-    <div id="espada"
-    onclick="sacarEspada()">
+</div>
 
-        ⚔️
+<div class="section">
 
-        <p>
-            Extrae la espada legendaria
-        </p>
+<h2>🗝️ Abre los Cofres</h2>
 
-    </div>
+<div class="chest-container">
 
-    <div id="mensajeFinal">
+<div>
+<div class="chest" onclick="openChest(this,'Desde que llegaste, todo es mejor ❤️')">
+📦
+</div>
+<div class="message"></div>
+</div>
 
-        <h1>🏆 MISIÓN COMPLETADA 🏆</h1>
+<div>
+<div class="chest" onclick="openChest(this,'Tu sonrisa ilumina mis días ✨')">
+📦
+</div>
+<div class="message"></div>
+</div>
 
-        <h1 style="margin-top:20px;">
-            ❤️ TE AMO DANIELA ❤️
-        </h1>
+<div>
+<div class="chest" onclick="openChest(this,'Gracias por acompañarme en esta aventura 🥰')">
+📦
+</div>
+<div class="message"></div>
+</div>
 
-        <p style="margin-top:20px;font-size:22px;">
+</div>
 
-            Eres mi persona favorita,
-            mi compañera de aventuras
-            y la mejor parte de mis días.
+</div>
 
-        </p>
+<div class="final">
 
-    </div>
+<p>
+Daniela...
+</p>
 
-    <div id="carta">
+<br>
 
-        <h2>📜 Carta para Daniela</h2>
+<p>
+No importa cuántas aventuras existan,
+siempre elegiría recorrerlas contigo ❤️
+</p>
 
-        <br>
-
-        <p>
-
-            Daniela:
-
-            Gracias por cada sonrisa,
-            por cada momento compartido
-            y por cada recuerdo que hemos creado.
-
-            Esta página es pequeña,
-            pero lo que siento por ti es enorme.
-
-            Si esta aventura tuviera un premio final,
-            sería seguir caminando a tu lado.
-
-            ❤️ Te Amo ❤️
-
-        </p>
-
-    </div>
-
-    <div class="spotify">
-
-        <h2>🎵 Nuestra Canción #1</h2>
-
-        <iframe
-        src="https://open.spotify.com/embed/intl-es/track/5J4ZkQpzMUFojo1CtAZYpn"
-        width="100%"
-        height="152"
-        frameBorder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-        </iframe>
-
-        <br><br>
-
-        <h2>🎵 Nuestra Canción #2</h2>
-
-        <iframe
-        src="https://open.spotify.com/embed/intl-es/track/4frLb7nWtsz2ymBE6k2GRP"
-        width="100%"
-        height="152"
-        frameBorder="0"
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
-        </iframe>
-
-    </div>
+</div>
 
 </div>
 
 <script>
 
-let abiertos=0;
+document.getElementById("startButton").onclick=function(){
 
-for(let i=0;i<120;i++){
+document.getElementById("startScreen").style.display="none";
+document.getElementById("main").style.display="block";
 
-    let estrella=document.createElement("div");
-
-    estrella.className="estrella";
-
-    estrella.innerHTML="✦";
-
-    estrella.style.left=Math.random()*100+"vw";
-
-    estrella.style.top=Math.random()*100+"vh";
-
-    estrella.style.fontSize=
-    (8+Math.random()*10)+"px";
-
-    document.body.appendChild(estrella);
 }
 
-function iniciarAventura(){
+function openChest(chest,text){
 
-    document.getElementById("inicio").style.display="none";
+chest.innerHTML="🎁";
 
-    document.getElementById("aventura").style.display="block";
+let msg=chest.parentElement.querySelector(".message");
+
+msg.style.display="block";
+
+msg.innerHTML=text;
+
 }
 
-function abrirCofre1(){
+const startDate=new Date("2024-02-14");
 
-    if(document.getElementById("cofre1").dataset.ok)
-    return;
+function updateCounter(){
 
-    document.getElementById("cofre1").innerHTML="📬";
+const now=new Date();
 
-    document.getElementById("mensaje1").style.display="block";
+const diff=now-startDate;
 
-    document.getElementById("cofre1").dataset.ok=true;
+const days=Math.floor(diff/(1000*60*60*24));
 
-    abiertos++;
+document.getElementById("counter").innerHTML=
+days+" días juntos ❤️";
 
-    verificar();
 }
 
-function abrirCofre2(){
+updateCounter();
 
-    if(document.getElementById("cofre2").dataset.ok)
-    return;
+setInterval(updateCounter,1000);
 
-    document.getElementById("cofre2").innerHTML="📬";
+function createHeart(){
 
-    document.getElementById("mensaje2").style.display="block";
+let heart=document.createElement("div");
 
-    document.getElementById("cofre2").dataset.ok=true;
+heart.classList.add("heart");
 
-    abiertos++;
+heart.innerHTML="❤️";
 
-    verificar();
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*25+15)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},8000);
+
 }
 
-function verificar(){
-
-    if(abiertos===2){
-
-        document.getElementById("espada").style.display="block";
-    }
-}
-
-function sacarEspada(){
-
-    document.getElementById("mensajeFinal").style.display="block";
-
-    document.getElementById("carta").style.display="block";
-
-    for(let i=0;i<60;i++){
-
-        let corazon=document.createElement("div");
-
-        corazon.className="corazon";
-
-        corazon.innerHTML="❤️";
-
-        corazon.style.left=
-        Math.random()*100+"vw";
-
-        corazon.style.bottom="-20px";
-
-        corazon.style.animationDuration=
-        (4+Math.random()*4)+"s";
-
-        document.body.appendChild(corazon);
-    }
-
-    for(let i=0;i<40;i++){
-
-        let fuego=document.createElement("div");
-
-        fuego.innerHTML="🎆";
-
-        fuego.style.position="fixed";
-
-        fuego.style.left=
-        Math.random()*100+"vw";
-
-        fuego.style.top=
-        Math.random()*100+"vh";
-
-        fuego.style.fontSize="40px";
-
-        document.body.appendChild(fuego);
-
-        setTimeout(()=>{
-            fuego.remove();
-        },3000);
-    }
-}
+setInterval(createHeart,500);
 
 </script>
 
