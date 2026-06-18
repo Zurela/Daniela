@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Daniela ❤️</title>
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(#0a3d2e,#14532d,#1e3a1e);
+    color:white;
+    font-family:Georgia, serif;
+    text-align:center;
+    overflow-x:hidden;
+}
+
+#inicio{
+    margin-top:120px;
+}
+
+h1{
+    color:#ffd700;
+    text-shadow:3px 3px 8px black;
+}
+
+button{
+    padding:15px 35px;
+    font-size:1.2rem;
+    background:#ffd700;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#aventura{
+    display:none;
+    padding:30px;
+}
+
+.cofres{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:50px;
+    margin-top:50px;
+}
+
+.cofre{
+    font-size:100px;
+    cursor:pointer;
+    transition:0.5s;
+}
+
+.cofre:hover{
+    transform:scale(1.15);
+}
+
+.mensaje{
+    display:none;
+    margin-top:15px;
+    font-size:22px;
+    color:#ffd700;
+}
+
+#mensajeFinal{
+    display:none;
+    margin-top:50px;
+    padding:25px;
+    background:rgba(255,255,255,.1);
+    border-radius:20px;
+    animation:aparecer 2s;
+}
+
+@keyframes aparecer{
+    from{
+        opacity:0;
+        transform:scale(.5);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.corazon{
+    position:fixed;
+    bottom:-20px;
+    font-size:25px;
+    animation:subir 8s linear infinite;
+    opacity:.7;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-120vh);
+    }
+}
+
+.spotify{
+    margin-top:40px;
+}
+
+iframe{
+    border-radius:12px;
+    max-width:500px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="inicio">
+
+    <h1>🎮 Para Daniela ❤️</h1>
+
+    <h2>Una pequeña aventura para alguien muy especial</h2>
+
+    <button onclick="iniciarAventura()">
+        PRESIONA INICIO
+    </button>
+
+</div>
+
+<div id="aventura">
+
+    <h1>🌟 Bienvenida Daniela 🌟</h1>
+
+    <p>
+        Hoy tendrás una pequeña aventura.
+        Abre los cofres para descubrir un secreto.
+    </p>
+
+    <div class="cofres">
+
+        <div>
+            <div class="cofre" onclick="abrirCofre1()"
+            id="cofre1">📦</div>
+
+            <div class="mensaje" id="mensaje1">
+                ❤️ Gracias por llegar a mi vida ❤️
+            </div>
+        </div>
+
+        <div>
+            <div class="cofre" onclick="abrirCofre2()"
+            id="cofre2">📦</div>
+
+            <div class="mensaje" id="mensaje2">
+                ✨ Cada día contigo es una aventura ✨
+            </div>
+        </div>
+
+    </div>
+
+    <div id="mensajeFinal">
+
+        <h1>🏆 MISIÓN COMPLETADA 🏆</h1>
+
+        <h1>❤️ TE AMO DANIELA ❤️</h1>
+
+        <p style="font-size:22px;">
+            Eres mi persona favorita,
+            la mejor parte de mis días
+            y la aventura que nunca quiero terminar.
+        </p>
+
+        <p style="font-size:28px;">
+            ❤️ Siempre tú ❤️
+        </p>
+
+    </div>
+
+    <div class="spotify">
+
+        <h2>🎵 Nuestra Canción #1</h2>
+
+        <!-- Reemplaza el enlace -->
+        <iframe
+        src="https://open.spotify.com/embed/track/11dFghVXANMlKmJXsNCbNl"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen>
+        </iframe>
+
+        <br><br>
+
+        <h2>🎵 Nuestra Canción #2</h2>
+
+        <!-- Reemplaza el enlace -->
+        <iframe
+        src="https://open.spotify.com/embed/track/4iV5W9uYEdYUVa79Axb7Rh"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
+
+<script>
+
+let abiertos = 0;
+
+function iniciarAventura(){
+    document.getElementById("inicio").style.display="none";
+    document.getElementById("aventura").style.display="block";
+}
+
+function abrirCofre1(){
+
+    if(document.getElementById("cofre1").dataset.open)
+        return;
+
+    document.getElementById("cofre1").innerHTML="📬";
+    document.getElementById("mensaje1").style.display="block";
+
+    document.getElementById("cofre1").dataset.open=true;
+
+    abiertos++;
+    verificar();
+}
+
+function abrirCofre2(){
+
+    if(document.getElementById("cofre2").dataset.open)
+        return;
+
+    document.getElementById("cofre2").innerHTML="📬";
+    document.getElementById("mensaje2").style.display="block";
+
+    document.getElementById("cofre2").dataset.open=true;
+
+    abiertos++;
+    verificar();
+}
+
+function verificar(){
+
+    if(abiertos==2){
+
+        document.getElementById("mensajeFinal").style.display="block";
+
+        for(let i=0;i<30;i++){
+
+            let corazon=document.createElement("div");
+
+            corazon.className="corazon";
+
+            corazon.style.left=Math.random()*100+"vw";
+
+            corazon.style.animationDuration=
+            (5+Math.random()*5)+"s";
+
+            corazon.innerHTML="❤️";
+
+            document.body.appendChild(corazon);
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
