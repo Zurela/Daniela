@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Para Daniela ❤️</title>
+<title>La Leyenda de Daniela ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
@@ -18,7 +18,7 @@ box-sizing:border-box;
 
 body{
 font-family:'Cinzel',serif;
-background:#0b1320;
+background:#08111f;
 color:white;
 overflow-x:hidden;
 text-align:center;
@@ -30,7 +30,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:black;
+background:linear-gradient(to bottom,#000,#08111f);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -38,13 +38,19 @@ align-items:center;
 z-index:9999;
 }
 
+#startScreen h1{
+font-size:3rem;
+margin-bottom:30px;
+}
+
 #startButton{
-padding:20px 50px;
+padding:20px 60px;
 font-size:24px;
 background:gold;
 border:none;
+border-radius:15px;
 cursor:pointer;
-border-radius:10px;
+font-weight:bold;
 }
 
 #main{
@@ -53,24 +59,22 @@ display:none;
 
 .hero{
 padding:80px 20px;
-background:url('https://images.unsplash.com/photo-1511497584788-876760111969?q=80&w=2000') center center/cover;
 }
 
 .hero h1{
-font-size:3rem;
-text-shadow:3px 3px 10px black;
+font-size:3.5rem;
+margin-bottom:20px;
 }
 
 .hero p{
-font-size:1.3rem;
-margin-top:20px;
+font-size:1.4rem;
 }
 
 .triforce{
-font-size:120px;
+font-size:140px;
 color:gold;
 animation:pulse 2s infinite;
-margin:40px 0;
+margin-top:30px;
 }
 
 @keyframes pulse{
@@ -79,65 +83,83 @@ margin:40px 0;
 100%{transform:scale(1);}
 }
 
+.photo{
+margin-top:50px;
+}
+
+.photo img{
+width:320px;
+max-width:90%;
+border-radius:20px;
+box-shadow:0 0 30px rgba(255,215,0,.5);
+}
+
 .section{
 padding:60px 20px;
-}
-
-.chest-container{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:40px;
-margin-top:40px;
-}
-
-.chest{
-font-size:100px;
-cursor:pointer;
-transition:0.4s;
-}
-
-.chest:hover{
-transform:scale(1.2);
-}
-
-.message{
-display:none;
-margin-top:15px;
-font-size:1.2rem;
-color:#ffd700;
 }
 
 .counter{
 font-size:2rem;
 margin-top:20px;
+color:gold;
 }
 
 .spotify{
-max-width:500px;
+max-width:600px;
 margin:auto;
+}
+
+.chest-container{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.chest-card{
+width:250px;
+}
+
+.chest{
+width:140px;
+cursor:pointer;
+transition:.3s;
+}
+
+.chest:hover{
+transform:scale(1.1);
+}
+
+.message{
+display:none;
+margin-top:20px;
+font-size:1.2rem;
+color:#ffd700;
 }
 
 .final{
 padding:80px 20px;
-font-size:2rem;
 background:#111;
+font-size:1.8rem;
+line-height:1.8;
 }
 
 .heart{
 position:fixed;
-font-size:24px;
-animation:float 8s linear infinite;
+bottom:-50px;
+font-size:25px;
+animation:floatUp 8s linear infinite;
 pointer-events:none;
 }
 
-@keyframes float{
-from{
-transform:translateY(100vh);
+@keyframes floatUp{
+0%{
+transform:translateY(0);
 opacity:1;
 }
-to{
-transform:translateY(-100px);
+100%{
+transform:translateY(-110vh);
 opacity:0;
 }
 }
@@ -149,9 +171,7 @@ opacity:0;
 
 <div id="startScreen">
 
-<h1 style="margin-bottom:30px;">
-✨ La Leyenda de Daniela ✨
-</h1>
+<h1>✨ La Leyenda de Daniela ✨</h1>
 
 <button id="startButton">
 🎮 PRESS START
@@ -161,27 +181,33 @@ opacity:0;
 
 <div id="main">
 
-<div class="hero">
+<section class="hero">
 
 <h1>Daniela ❤️</h1>
 
 <p>Eres mi aventura favorita.</p>
 
-<div class="triforce">▲</div>
-
+<div class="triforce">
+▲
 </div>
 
-<div class="section">
+<div class="photo">
+<img src="foto.JPG" alt="Nosotros">
+</div>
 
-<h2>⏳ Tiempo de nuestra aventura</h2>
+</section>
+
+<section class="section">
+
+<h2>⏳ Nuestra aventura</h2>
 
 <div id="counter" class="counter"></div>
 
-</div>
+</section>
 
-<div class="section">
+<section class="section">
 
-<h2>🎵 Nuestras Canciones</h2>
+<h2>🎵 Nuestras canciones</h2>
 
 <br>
 
@@ -211,40 +237,52 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 
 </div>
 
-</div>
+</section>
 
-<div class="section">
+<section class="section">
 
-<h2>🗝️ Abre los Cofres</h2>
+<h2>🗝️ Cofres secretos</h2>
 
 <div class="chest-container">
 
-<div>
-<div class="chest" onclick="openChest(this,'Desde que llegaste, todo es mejor ❤️')">
-📦
-</div>
+<div class="chest-card">
+
+<img
+src="cofre.JPG"
+class="chest"
+onclick="abrir(this,'Desde que llegaste, mis días tienen más color ❤️')">
+
 <div class="message"></div>
+
 </div>
 
-<div>
-<div class="chest" onclick="openChest(this,'Tu sonrisa ilumina mis días ✨')">
-📦
-</div>
+<div class="chest-card">
+
+<img
+src="cofre.JPG"
+class="chest"
+onclick="abrir(this,'Gracias por compartir esta aventura conmigo ✨')">
+
 <div class="message"></div>
+
 </div>
 
-<div>
-<div class="chest" onclick="openChest(this,'Gracias por acompañarme en esta aventura 🥰')">
-📦
-</div>
+<div class="chest-card">
+
+<img
+src="cofre.JPG"
+class="chest"
+onclick="abrir(this,'Te elegiría una y mil veces más ❤️')">
+
 <div class="message"></div>
-</div>
 
 </div>
 
 </div>
 
-<div class="final">
+</section>
+
+<section class="final">
 
 <p>
 Daniela...
@@ -253,11 +291,14 @@ Daniela...
 <br>
 
 <p>
-No importa cuántas aventuras existan,
-siempre elegiría recorrerlas contigo ❤️
+En todos los juegos existe una misión principal.
 </p>
 
-</div>
+<p>
+Y en mi vida, tú eres la más importante ❤️
+</p>
+
+</section>
 
 </div>
 
@@ -270,60 +311,59 @@ document.getElementById("main").style.display="block";
 
 }
 
-function openChest(chest,text){
+function abrir(elemento,texto){
 
-chest.innerHTML="🎁";
+let mensaje=
+elemento.parentElement.querySelector(".message");
 
-let msg=chest.parentElement.querySelector(".message");
+mensaje.innerHTML=texto;
 
-msg.style.display="block";
+mensaje.style.display="block";
 
-msg.innerHTML=text;
-
+elemento.style.transform="scale(1.2)";
 }
 
-const startDate=new Date("2024-02-14");
+const fechaInicio=new Date("2024-02-14");
 
-function updateCounter(){
+function actualizarContador(){
 
-const now=new Date();
+const hoy=new Date();
 
-const diff=now-startDate;
+const diferencia=hoy-fechaInicio;
 
-const days=Math.floor(diff/(1000*60*60*24));
+const dias=Math.floor(
+diferencia/(1000*60*60*24)
+);
 
 document.getElementById("counter").innerHTML=
-days+" días juntos ❤️";
+dias + " días juntos ❤️";
 
 }
 
-updateCounter();
+actualizarContador();
 
-setInterval(updateCounter,1000);
+function crearCorazon(){
 
-function createHeart(){
+const heart=document.createElement("div");
 
-let heart=document.createElement("div");
-
-heart.classList.add("heart");
+heart.className="heart";
 
 heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=(Math.random()*25+15)+"px";
+heart.style.fontSize=
+(Math.random()*20+20)+"px";
 
 document.body.appendChild(heart);
 
 setTimeout(()=>{
-
 heart.remove();
-
 },8000);
 
 }
 
-setInterval(createHeart,500);
+setInterval(crearCorazon,600);
 
 </script>
 
