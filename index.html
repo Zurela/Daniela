@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,32 +8,43 @@
 
 <style>
 
-body{
+*{
     margin:0;
-    min-height:100vh;
-    background:linear-gradient(#0a3d2e,#14532d,#1e3a1e);
-    color:white;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:Georgia, serif;
+    color:white;
     text-align:center;
+    min-height:100vh;
     overflow-x:hidden;
+    background:
+    linear-gradient(
+    to bottom,
+    #050816,
+    #0b1026,
+    #13294b);
 }
 
 #inicio{
-    margin-top:120px;
+    padding-top:120px;
 }
 
 h1{
     color:#ffd700;
-    text-shadow:3px 3px 8px black;
+    text-shadow:0 0 15px gold;
 }
 
 button{
-    padding:15px 35px;
+    margin-top:30px;
+    padding:15px 40px;
     font-size:1.2rem;
-    background:#ffd700;
     border:none;
     border-radius:12px;
     cursor:pointer;
+    background:gold;
     font-weight:bold;
 }
 
@@ -47,18 +57,23 @@ button:hover{
     padding:30px;
 }
 
+.castillo{
+    font-size:120px;
+    margin:20px;
+}
+
 .cofres{
     display:flex;
     justify-content:center;
+    gap:60px;
     flex-wrap:wrap;
-    gap:50px;
-    margin-top:50px;
+    margin-top:40px;
 }
 
 .cofre{
     font-size:100px;
     cursor:pointer;
-    transition:0.5s;
+    transition:.4s;
 }
 
 .cofre:hover{
@@ -67,46 +82,38 @@ button:hover{
 
 .mensaje{
     display:none;
-    margin-top:15px;
-    font-size:22px;
     color:#ffd700;
+    font-size:22px;
+    margin-top:15px;
+}
+
+#espada{
+    margin-top:50px;
+    display:none;
+    cursor:pointer;
+    font-size:100px;
+}
+
+#espada p{
+    font-size:20px;
 }
 
 #mensajeFinal{
     display:none;
     margin-top:50px;
-    padding:25px;
-    background:rgba(255,255,255,.1);
+    padding:30px;
+    background:rgba(255,255,255,.08);
     border-radius:20px;
-    animation:aparecer 2s;
 }
 
-@keyframes aparecer{
-    from{
-        opacity:0;
-        transform:scale(.5);
-    }
-    to{
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-.corazon{
-    position:fixed;
-    bottom:-20px;
-    font-size:25px;
-    animation:subir 8s linear infinite;
-    opacity:.7;
-}
-
-@keyframes subir{
-    from{
-        transform:translateY(0);
-    }
-    to{
-        transform:translateY(-120vh);
-    }
+#carta{
+    display:none;
+    margin:40px auto;
+    max-width:700px;
+    background:rgba(255,255,255,.08);
+    padding:25px;
+    border-radius:20px;
+    line-height:1.8;
 }
 
 .spotify{
@@ -115,7 +122,37 @@ button:hover{
 
 iframe{
     border-radius:12px;
-    max-width:500px;
+    max-width:600px;
+}
+
+.estrella{
+    position:fixed;
+    color:white;
+    animation:parpadeo 3s infinite;
+}
+
+@keyframes parpadeo{
+    50%{
+        opacity:.2;
+    }
+}
+
+.corazon{
+    position:fixed;
+    font-size:24px;
+    animation:subir 7s linear forwards;
+}
+
+@keyframes subir{
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
 }
 
 </style>
@@ -127,7 +164,9 @@ iframe{
 
     <h1>🎮 Para Daniela ❤️</h1>
 
-    <h2>Una pequeña aventura para alguien muy especial</h2>
+    <h2 style="margin-top:20px;">
+        Una aventura creada especialmente para ti
+    </h2>
 
     <button onclick="iniciarAventura()">
         PRESIONA INICIO
@@ -137,32 +176,62 @@ iframe{
 
 <div id="aventura">
 
-    <h1>🌟 Bienvenida Daniela 🌟</h1>
+    <div class="castillo">
+        🏰
+    </div>
 
-    <p>
-        Hoy tendrás una pequeña aventura.
-        Abre los cofres para descubrir un secreto.
+    <h1>Bienvenida Daniela ✨</h1>
+
+    <p style="margin-top:15px;">
+        Explora esta pequeña aventura y descubre el secreto.
     </p>
 
     <div class="cofres">
 
         <div>
-            <div class="cofre" onclick="abrirCofre1()"
-            id="cofre1">📦</div>
 
-            <div class="mensaje" id="mensaje1">
-                ❤️ Gracias por llegar a mi vida ❤️
+            <div id="cofre1"
+            class="cofre"
+            onclick="abrirCofre1()">
+                📦
             </div>
+
+            <div id="mensaje1"
+            class="mensaje">
+
+                ❤️ Gracias por llegar a mi vida ❤️
+
+            </div>
+
         </div>
 
         <div>
-            <div class="cofre" onclick="abrirCofre2()"
-            id="cofre2">📦</div>
 
-            <div class="mensaje" id="mensaje2">
-                ✨ Cada día contigo es una aventura ✨
+            <div id="cofre2"
+            class="cofre"
+            onclick="abrirCofre2()">
+                📦
             </div>
+
+            <div id="mensaje2"
+            class="mensaje">
+
+                ✨ Cada día contigo es una aventura ✨
+
+            </div>
+
         </div>
+
+    </div>
+
+    <div id="espada"
+    onclick="sacarEspada()">
+
+        ⚔️
+
+        <p>
+            Extrae la espada legendaria
+        </p>
 
     </div>
 
@@ -170,16 +239,42 @@ iframe{
 
         <h1>🏆 MISIÓN COMPLETADA 🏆</h1>
 
-        <h1>❤️ TE AMO DANIELA ❤️</h1>
+        <h1 style="margin-top:20px;">
+            ❤️ TE AMO DANIELA ❤️
+        </h1>
 
-        <p style="font-size:22px;">
+        <p style="margin-top:20px;font-size:22px;">
+
             Eres mi persona favorita,
-            la mejor parte de mis días
-            y la aventura que nunca quiero terminar.
+            mi compañera de aventuras
+            y la mejor parte de mis días.
+
         </p>
 
-        <p style="font-size:28px;">
-            ❤️ Siempre tú ❤️
+    </div>
+
+    <div id="carta">
+
+        <h2>📜 Carta para Daniela</h2>
+
+        <br>
+
+        <p>
+
+            Daniela:
+
+            Gracias por cada sonrisa,
+            por cada momento compartido
+            y por cada recuerdo que hemos creado.
+
+            Esta página es pequeña,
+            pero lo que siento por ti es enorme.
+
+            Si esta aventura tuviera un premio final,
+            sería seguir caminando a tu lado.
+
+            ❤️ Te Amo ❤️
+
         </p>
 
     </div>
@@ -188,29 +283,24 @@ iframe{
 
         <h2>🎵 Nuestra Canción #1</h2>
 
-        
         <iframe
-        style="border-radius:12px"
         src="https://open.spotify.com/embed/intl-es/track/5J4ZkQpzMUFojo1CtAZYpn"
         width="100%"
         height="152"
         frameBorder="0"
-        allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy">
         </iframe>
+
         <br><br>
 
         <h2>🎵 Nuestra Canción #2</h2>
 
-        
-     <iframe
-        style="border-radius:12px"
+        <iframe
         src="https://open.spotify.com/embed/intl-es/track/4frLb7nWtsz2ymBE6k2GRP"
         width="100%"
         height="152"
         frameBorder="0"
-        allowfullscreen=""
         allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
         loading="lazy">
         </iframe>
@@ -221,62 +311,119 @@ iframe{
 
 <script>
 
-let abiertos = 0;
+let abiertos=0;
+
+for(let i=0;i<120;i++){
+
+    let estrella=document.createElement("div");
+
+    estrella.className="estrella";
+
+    estrella.innerHTML="✦";
+
+    estrella.style.left=Math.random()*100+"vw";
+
+    estrella.style.top=Math.random()*100+"vh";
+
+    estrella.style.fontSize=
+    (8+Math.random()*10)+"px";
+
+    document.body.appendChild(estrella);
+}
 
 function iniciarAventura(){
+
     document.getElementById("inicio").style.display="none";
+
     document.getElementById("aventura").style.display="block";
 }
 
 function abrirCofre1(){
 
-    if(document.getElementById("cofre1").dataset.open)
-        return;
+    if(document.getElementById("cofre1").dataset.ok)
+    return;
 
     document.getElementById("cofre1").innerHTML="📬";
+
     document.getElementById("mensaje1").style.display="block";
 
-    document.getElementById("cofre1").dataset.open=true;
+    document.getElementById("cofre1").dataset.ok=true;
 
     abiertos++;
+
     verificar();
 }
 
 function abrirCofre2(){
 
-    if(document.getElementById("cofre2").dataset.open)
-        return;
+    if(document.getElementById("cofre2").dataset.ok)
+    return;
 
     document.getElementById("cofre2").innerHTML="📬";
+
     document.getElementById("mensaje2").style.display="block";
 
-    document.getElementById("cofre2").dataset.open=true;
+    document.getElementById("cofre2").dataset.ok=true;
 
     abiertos++;
+
     verificar();
 }
 
 function verificar(){
 
-    if(abiertos==2){
+    if(abiertos===2){
 
-        document.getElementById("mensajeFinal").style.display="block";
+        document.getElementById("espada").style.display="block";
+    }
+}
 
-        for(let i=0;i<30;i++){
+function sacarEspada(){
 
-            let corazon=document.createElement("div");
+    document.getElementById("mensajeFinal").style.display="block";
 
-            corazon.className="corazon";
+    document.getElementById("carta").style.display="block";
 
-            corazon.style.left=Math.random()*100+"vw";
+    for(let i=0;i<60;i++){
 
-            corazon.style.animationDuration=
-            (5+Math.random()*5)+"s";
+        let corazon=document.createElement("div");
 
-            corazon.innerHTML="❤️";
+        corazon.className="corazon";
 
-            document.body.appendChild(corazon);
-        }
+        corazon.innerHTML="❤️";
+
+        corazon.style.left=
+        Math.random()*100+"vw";
+
+        corazon.style.bottom="-20px";
+
+        corazon.style.animationDuration=
+        (4+Math.random()*4)+"s";
+
+        document.body.appendChild(corazon);
+    }
+
+    for(let i=0;i<40;i++){
+
+        let fuego=document.createElement("div");
+
+        fuego.innerHTML="🎆";
+
+        fuego.style.position="fixed";
+
+        fuego.style.left=
+        Math.random()*100+"vw";
+
+        fuego.style.top=
+        Math.random()*100+"vh";
+
+        fuego.style.fontSize="40px";
+
+        document.body.appendChild(fuego);
+
+        setTimeout(()=>{
+            fuego.remove();
+        },3000);
     }
 }
 
