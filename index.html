@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#08111f">
+<meta name="apple-mobile-web-app-capable" content="yes">
 
 <title>La Leyenda de Daniela ❤️</title>
 
@@ -16,6 +21,10 @@ padding:0;
 box-sizing:border-box;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:'Cinzel',serif;
 background:#08111f;
@@ -24,57 +33,73 @@ overflow-x:hidden;
 text-align:center;
 }
 
+/* ---------------- START SCREEN ---------------- */
+
 #startScreen{
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:linear-gradient(to bottom,#000,#08111f);
+background:linear-gradient(180deg,#000,#08111f);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:9999;
+padding:20px;
 }
 
 #startScreen h1{
-font-size:3rem;
+font-size:2.5rem;
+margin-bottom:25px;
+color:gold;
+}
+
+#startScreen p{
 margin-bottom:30px;
+max-width:500px;
 }
 
 #startButton{
-padding:20px 60px;
-font-size:24px;
+padding:18px 45px;
+font-size:1.2rem;
+font-weight:bold;
 background:gold;
 border:none;
 border-radius:15px;
 cursor:pointer;
-font-weight:bold;
+transition:.3s;
+}
+
+#startButton:hover{
+transform:scale(1.08);
 }
 
 #main{
 display:none;
 }
 
+/* ---------------- HERO ---------------- */
+
 .hero{
-padding:80px 20px;
+padding:60px 20px;
 }
 
 .hero h1{
-font-size:3.5rem;
+font-size:3rem;
 margin-bottom:20px;
 }
 
 .hero p{
-font-size:1.4rem;
+font-size:1.2rem;
 }
 
 .triforce{
-font-size:140px;
+font-size:120px;
 color:gold;
+margin:30px 0;
 animation:pulse 2s infinite;
-margin-top:30px;
 }
 
 @keyframes pulse{
@@ -84,37 +109,47 @@ margin-top:30px;
 }
 
 .photo{
-margin-top:50px;
+margin-top:20px;
 }
 
 .photo img{
-width:320px;
-max-width:90%;
-border-radius:20px;
-box-shadow:0 0 30px rgba(255,215,0,.5);
+width:min(90vw,400px);
+border-radius:25px;
+box-shadow:0 0 25px rgba(255,215,0,.6);
 }
+
+/* ---------------- SECTION ---------------- */
 
 .section{
 padding:60px 20px;
 }
 
-.counter{
-font-size:2rem;
-margin-top:20px;
+.section h2{
+margin-bottom:20px;
 color:gold;
 }
+
+/* ---------------- COUNTER ---------------- */
+
+.counter{
+font-size:1.8rem;
+font-weight:bold;
+}
+
+/* ---------------- SPOTIFY ---------------- */
 
 .spotify{
 max-width:600px;
 margin:auto;
 }
 
+/* ---------------- CHESTS ---------------- */
+
 .chest-container{
 display:flex;
 justify-content:center;
-gap:40px;
 flex-wrap:wrap;
-margin-top:40px;
+gap:30px;
 }
 
 .chest-card{
@@ -122,7 +157,7 @@ width:250px;
 }
 
 .chest{
-width:140px;
+width:150px;
 cursor:pointer;
 transition:.3s;
 }
@@ -133,24 +168,27 @@ transform:scale(1.1);
 
 .message{
 display:none;
-margin-top:20px;
-font-size:1.2rem;
-color:#ffd700;
+margin-top:15px;
+font-size:1.1rem;
+color:#FFD700;
 }
 
+/* ---------------- FINAL ---------------- */
+
 .final{
-padding:80px 20px;
 background:#111;
-font-size:1.8rem;
+padding:80px 20px;
+font-size:1.5rem;
 line-height:1.8;
 }
+
+/* ---------------- HEARTS ---------------- */
 
 .heart{
 position:fixed;
 bottom:-50px;
-font-size:25px;
-animation:floatUp 8s linear infinite;
 pointer-events:none;
+animation:floatUp 8s linear infinite;
 }
 
 @keyframes floatUp{
@@ -159,12 +197,61 @@ transform:translateY(0);
 opacity:1;
 }
 100%{
-transform:translateY(-110vh);
+transform:translateY(-120vh);
 opacity:0;
 }
 }
 
+/* ---------------- FADE EFFECT ---------------- */
+
+.fade{
+opacity:0;
+transform:translateY(30px);
+transition:1s;
+}
+
+.fade.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width:768px){
+
+.hero h1{
+font-size:2.2rem;
+}
+
+.hero p{
+font-size:1rem;
+}
+
+.triforce{
+font-size:80px;
+}
+
+.counter{
+font-size:1.3rem;
+}
+
+.chest-container{
+flex-direction:column;
+align-items:center;
+}
+
+.chest{
+width:180px;
+}
+
+.final{
+font-size:1.2rem;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
@@ -172,6 +259,10 @@ opacity:0;
 <div id="startScreen">
 
 <h1>✨ La Leyenda de Daniela ✨</h1>
+
+<p>
+Presiona START para comenzar nuestra aventura.
+</p>
 
 <button id="startButton">
 🎮 PRESS START
@@ -181,7 +272,7 @@ opacity:0;
 
 <div id="main">
 
-<section class="hero">
+<section class="hero fade">
 
 <h1>Daniela ❤️</h1>
 
@@ -197,19 +288,17 @@ opacity:0;
 
 </section>
 
-<section class="section">
+<section class="section fade">
 
-<h2>⏳ Nuestra aventura</h2>
+<h2>⏳ Tiempo de nuestra aventura</h2>
 
 <div id="counter" class="counter"></div>
 
 </section>
 
-<section class="section">
+<section class="section fade">
 
 <h2>🎵 Nuestras canciones</h2>
-
-<br>
 
 <div class="spotify">
 
@@ -219,8 +308,7 @@ src="https://open.spotify.com/embed/track/5J4ZkQpzMUFojo1CtAZYpn"
 width="100%"
 height="152"
 frameborder="0"
-allowfullscreen
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+allowfullscreen>
 </iframe>
 
 <br><br>
@@ -231,17 +319,16 @@ src="https://open.spotify.com/embed/track/4frLb7nWtsz2ymBE6k2GRP"
 width="100%"
 height="152"
 frameborder="0"
-allowfullscreen
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+allowfullscreen>
 </iframe>
 
 </div>
 
 </section>
 
-<section class="section">
+<section class="section fade">
 
-<h2>🗝️ Cofres secretos</h2>
+<h2>🗝️ Cofres Secretos</h2>
 
 <div class="chest-container">
 
@@ -250,7 +337,7 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 <img
 src="cofre.JPG"
 class="chest"
-onclick="abrir(this,'Desde que llegaste, mis días tienen más color ❤️')">
+onclick="abrir(this,'Desde que llegaste, mis días son mejores ❤️')">
 
 <div class="message"></div>
 
@@ -261,7 +348,7 @@ onclick="abrir(this,'Desde que llegaste, mis días tienen más color ❤️')">
 <img
 src="cofre.JPG"
 class="chest"
-onclick="abrir(this,'Gracias por compartir esta aventura conmigo ✨')">
+onclick="abrir(this,'Gracias por cada momento compartido ✨')">
 
 <div class="message"></div>
 
@@ -272,7 +359,7 @@ onclick="abrir(this,'Gracias por compartir esta aventura conmigo ✨')">
 <img
 src="cofre.JPG"
 class="chest"
-onclick="abrir(this,'Te elegiría una y mil veces más ❤️')">
+onclick="abrir(this,'Si volviera a elegir, te elegiría otra vez ❤️')">
 
 <div class="message"></div>
 
@@ -282,20 +369,24 @@ onclick="abrir(this,'Te elegiría una y mil veces más ❤️')">
 
 </section>
 
-<section class="final">
+<section class="final fade">
+
+<p>Daniela...</p>
+
+<br>
 
 <p>
-Daniela...
+Hay muchas aventuras en el mundo.
+</p>
+
+<p>
+Pero mi favorita siempre será la que vivo contigo.
 </p>
 
 <br>
 
 <p>
-En todos los juegos existe una misión principal.
-</p>
-
-<p>
-Y en mi vida, tú eres la más importante ❤️
+❤️
 </p>
 
 </section>
@@ -304,6 +395,8 @@ Y en mi vida, tú eres la más importante ❤️
 
 <script>
 
+/* START */
+
 document.getElementById("startButton").onclick=function(){
 
 document.getElementById("startScreen").style.display="none";
@@ -311,36 +404,52 @@ document.getElementById("main").style.display="block";
 
 }
 
+/* CHESTS */
+
 function abrir(elemento,texto){
 
 let mensaje=
 elemento.parentElement.querySelector(".message");
 
 mensaje.innerHTML=texto;
-
 mensaje.style.display="block";
 
-elemento.style.transform="scale(1.2)";
+elemento.style.transform="scale(1.15)";
+
 }
 
-const fechaInicio=new Date("2025-11-21");
+/* COUNTER */
+
+const fechaInicio = new Date("2025-11-21");
 
 function actualizarContador(){
 
-const hoy=new Date();
+const hoy = new Date();
 
-const diferencia=hoy-fechaInicio;
+let years = hoy.getFullYear() - fechaInicio.getFullYear();
+let months = hoy.getMonth() - fechaInicio.getMonth();
+let days = hoy.getDate() - fechaInicio.getDate();
 
-const dias=Math.floor(
-diferencia/(1000*60*60*24)
-);
+if(days < 0){
+months--;
+days += 30;
+}
 
-document.getElementById("counter").innerHTML=
-dias + " días juntos ❤️";
+if(months < 0){
+years--;
+months += 12;
+}
+
+document.getElementById("counter").innerHTML =
+years + " años, " +
+months + " meses y " +
+days + " días ❤️";
 
 }
 
 actualizarContador();
+
+/* HEARTS */
 
 function crearCorazon(){
 
@@ -352,8 +461,7 @@ heart.innerHTML="❤️";
 
 heart.style.left=Math.random()*100+"vw";
 
-heart.style.fontSize=
-(Math.random()*20+20)+"px";
+heart.style.fontSize=(Math.random()*20+15)+"px";
 
 document.body.appendChild(heart);
 
@@ -363,7 +471,29 @@ heart.remove();
 
 }
 
-setInterval(crearCorazon,600);
+setInterval(crearCorazon,500);
+
+/* FADE EFFECT */
+
+const observer = new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+});
+
+document.querySelectorAll(".fade").forEach(el=>{
+
+observer.observe(el);
+
+});
 
 </script>
 
